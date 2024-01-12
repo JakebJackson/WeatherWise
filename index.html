@@ -7,7 +7,32 @@
         <link rel="stylesheet" href="./assets/css/style.css"/>
         <title>WeatherWise</title>
         <body>
-            
+            <header class="bg-sky-600 flex items-center">
+                <h1 class="text-5xl p-6 mx-auto">WeatherWise Dashboard</h1>
+            </header>
+            <div id="search-and-history-column" class="bg-slate-500 absolute">
+                <div id="city-search" class="">
+                    <form id="search-form" class="">
+
+                    </form>
+                    <button id="search-btn" class="">Search</button>
+                </div>
+                <div id="search-history" class="">
+
+                </div>
+            </div>
+            <div id="results-div" class="flex items-center">
+                <div id="current-data-display" class="flex items-center">
+                    <h2 id="city-date-header" class="">Select a City</h2>
+                    <p class="">Temp: <span id="cur-temp-info"></span></p>
+                    <p class="">Wind: <span id="cur-wind-info"></span></p>
+                    <p class="">Humidity: <span id="cur-humid-info"></span></p>
+                </div>
+                <div>
+                    <h2 class="">5-Day Forecast:</h2>
+                </div>
+            </div>
         </body>
+        <script src="./Assets/js/script.js"></script>
     </head>
 </html>
