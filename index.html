@@ -1,37 +1,102 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <link rel="stylesheet" href="./assets/css/style.css"/>
-        <title>WeatherWise</title>
-        <body class="h-screen">
-            <header class="bg-sky-600 flex items-center">
-                <h1 class="text-5xl p-6 mx-auto">WeatherWise Dashboard</h1>
-            </header>
-            <div id="search-and-history-column" class="w-4/12">
-                <form id="city-search" class="">
-                    <input type="text" name="city-search" class="box-border p-3 w-80 border-4 m-4" placeholder="Enter a city"><br>
-                    <input type="button" name="search-btn" value="Search" onclick="handleAPIQuery()" class="box-border p-3 w-80 border-4 bg-slate-500 m-4"></button>
-                </form>
-                <div id="search-history" class="">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>WeatherWise</title>
+
+<body class="" data-bs-theme="dark">
+
+    <!-- As a heading -->
+    <nav class="navbar bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 fs-1 mx-auto p-3">WeatherWise</span>
+        </div>
+    </nav>
+    <div class="row">
+        <div id="search-and-history-column" class="col-3 align-self-start display-inline p-5">
+            <form>
+                <div class="mb-3">
+                    <label for="citySearch" class="form-label">Search a City</label>
+                    <input type="city" class="form-control" name="citySearch" aria-describedby="search-desc">
+                    <div id="search-desc" class="form-text">Enter a city to get current weather conditions</div>
+                </div>
+                
+                <button type="search" class="btn btn-primary" onclick="handleAPIQuery()">Search</button>
+            </form>
+            <div id="search-history" class="">
+
+            </div>
+        </div>
+        <div id="results-div" class="container col-6 align-self-center p-5" data-bs-theme="dark">
+            <div id="current-data-display" class="flex items-center">
+                <h2 id="city-date-header" class="">Select a City</h2>
+                <div class="card">
+                    <div id="result-dt-div" class="card-header">
+                        Select a city
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Temperature: <span id="day0-temp"></span></h5>
+                        <h5 class="card-title">Wind: <span id="day0-wind"></span></h5>
+                        <h5 class="card-title">Humidity: <span id="day0-humidity"></span></h5>
+                    </div>
                 </div>
             </div>
-            <div id="results-div" class="flex inline pl-96 justify-center w-8/12 h-12/12">
-                <div id="current-data-display" class="flex items-center">
-                    <h2 id="city-date-header" class="">Select a City</h2>
-                    <p class="">Temp: <span id="cur-temp-info"></span></p>
-                    <p class="">Wind: <span id="cur-wind-info"></span></p>
-                    <p class="">Humidity: <span id="cur-humid-info"></span></p>
+            <div class="row" data-bs-theme="dark">
+                <h2 class="">5-Day Forecast:</h2>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 id="fc-day1-date" class="card-title">Date</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Temperature: </h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Wind: </h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Humidity: </h6>
+                    </div>
                 </div>
-                <div>
-                    <h2 class="">5-Day Forecast:</h2>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 id="fc-day2-date" class="card-title">Date</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Temperature: </h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Wind: </h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Humidity: </h6>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 id="fc-day3-date" class="card-title">Date</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Temperature: </h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Wind: </h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Humidity: </h6>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 id="fc-day4-date" class="card-title">Date</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Temperature: </h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Wind: </h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Humidity: </h6>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 id="fc-day5-date" class="card-title">Date</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Temperature: </h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Wind: </h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Humidity: </h6>
+                    </div>
                 </div>
             </div>
-        </body>
-        <script src="./Assets/js/script.js"></script>
-    </head>
+        </div>
+        <div class="col-3 align-self-end ">
+
+        </div>
+    </div>
+</body>
+<script src="./Assets/js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
 </html>
