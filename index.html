@@ -6,15 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Link to bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Link to DayJS -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    <!-- Tab tittle  -->
     <title>WeatherWise</title>
 
-<body class="" data-bs-theme="dark">
-
+<body data-bs-theme="dark">
     <!-- Navbar -->
     <nav class="navbar bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
@@ -22,28 +21,33 @@
             <span class="navbar-brand mb-0 fs-1 mx-auto p-3">WeatherWise</span>
         </div>
     </nav>
+    <!-- Content div  -->
     <div class="row">
         <div id="search-and-history-column" class="col-3 align-self-start display-inline p-5">
             <form>
                 <div class="mb-3">
-                    <label for="city-search" class="form-label">Search a City</label>
-                    <input type="city" class="form-control" id="city-search" aria-describedby="search-desc">
+                    <!-- City search form -->
+                    <label for="city-search" class="form-label">Search a City:</label>
+                    <input type="city" id="city-search" class="form-control p-1" aria-describedby="search-desc">
                     <div id="search-desc" class="form-text">Enter a city to get current weather conditions</div>
                 </div>
                 <!-- Search button that runs the 'handleAPIQuery' function in the JS file when clicked -->
-                <button id="search-btn" class="btn btn-primary" onclick="handleAPIQuery()">Search</button>
+                <button id="search-btn" class="btn btn-primary p-1 w-100" onclick="handleAPIQuery()">Search</button>
             </form>
-            <div id="search-history" class="pt-4">
+            <!-- Prior searches div -->
+            <div class="pt-4">
                 <h2>Previous Searches:</h2>
+                <div id="search-history"></div>
             </div>
         </div>
 
+        <!-- Results div -->
         <div id="results-div" class="container col-6 align-self-center p-5">
             <div id="current-data-display" class="flex items-center">
                 <h2 id="city-date-header" class="">Current Forecast:</h2>
                 <div class="card">
                     <div id="selected-city" class="card-header">
-                        City Name
+                        No city selected yet.
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Temperature: <span id="cur-temp"></span></h5>
@@ -53,8 +57,11 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 5 day forecast div (Starts hidden on page load) -->
             <div id="forecast-div" class="row d-none" data-bs-theme="dark">
                 <h2 class="">5-Day Forecast:</h2>
+                <!-- Cards that show the future forecast -->
                 <div class="card" style="width: 18rem;">
                     <div id="fc-card1" class="card-body">
                         <h5 id="date-card1" class="card-title"></h5>
@@ -97,12 +104,14 @@
                 </div>
             </div>
         </div>
+        <!-- Div for page spacing -->
         <div class="col-3 align-self-end ">
-
         </div>
     </div>
 </body>
+<!-- jQuery link -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Link to my own JS -->
 <script src="./Assets/js/script.js"></script>
 </head>
 
