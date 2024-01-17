@@ -31,6 +31,17 @@
                     <input type="city" id="city-search" class="form-control p-1" aria-describedby="search-desc">
                     <div id="search-desc" class="form-text">Enter a city to get current weather conditions</div>
                 </div>
+                <!-- Dropdown to chose Country code for query. -->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle p-1 mb-1 w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Select Country
+                    </button>
+                    <ul class="dropdown-menu pd-1 w-100">
+                      <li><a class="dropdown-item" href="#au" value="au">Australia</a></li>
+                      <li><a class="dropdown-item" href="#us" value="us">America</a></li>
+                      <li><a class="dropdown-item" href="#nz" value="nz">New Zealand</a></li>
+                    </ul>
+                  </div>
                 <!-- Search button that runs the 'handleAPIQuery' function in the JS file when clicked -->
                 <button id="search-btn" class="btn btn-primary p-1 w-100" onclick="handleAPIQuery()">Search</button>
             </form>
@@ -111,6 +122,8 @@
 </body>
 <!-- jQuery link -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Bootstrap script link -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <!-- Link to my own JS -->
 <script src="./Assets/js/script.js"></script>
 </head>

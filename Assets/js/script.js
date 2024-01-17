@@ -34,11 +34,23 @@ function handleAPIQuery() {
     // Prevents refresh on button click.
     event.preventDefault();
     daySelect = 0;
+    var countryCode;
+
+    if (document.location.href.includes('#us')) {
+        countryCode = ',us';
+    } else if (document.location.href.includes('#nz')) {
+        countryCode = ',nz';
+    } else {
+        countryCode = ',au';
+    }
 
     // Gets the value that will be used in the fetch url
     var city = searchBtn.val();
-    var queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',au&appid=' + apiKey + '&units=metric';
+    var queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + countryCode + '&appid=' + apiKey + '&units=metric';
+    
 
+
+    
     // Fetch request
     fetch(queryURL, {
         method: 'GET'
@@ -55,7 +67,7 @@ function handleAPIQuery() {
         // Creating an object to store all of the relevant information within.
         currentDayData = {
             name: data.city.name,
-            date: dayjs.unix(data.list[0].dt).format('DD/MM/YYYY'),
+            date: dayjs.unix(data.list[0].dt).format('dddd, DD/MM/YYYY'),
             humidity: data.list[0].main.humidity + '%',
             temp: data.list[0].main.temp + 'C',
             wind: data.list[0].wind.speed + 'km/h',
@@ -70,7 +82,7 @@ function handleAPIQuery() {
         for(i = 0; i <= 4; i++) {
             // The intervals for days are incremented by 8 in the returned data.list array, so each iteration of the for loop adds 8 so that I can get day1 , 2 etc.
             forecastData[i] = {
-                date: dayjs.unix(data.list[daySelect].dt).format('DD/MM/YYYY'),
+                date: dayjs.unix(data.list[daySelect].dt).format('dddd, DD/MM/YYYY'),
                 humidity: data.list[daySelect].main.humidity + '%',
                 temp: data.list[daySelect].main.temp + 'C',
                 wind: data.list[daySelect].wind.speed + 'km/h',
