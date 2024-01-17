@@ -18,7 +18,7 @@ I really enjoyed making this application however there were some difficulties, t
 
 ## Mock-Up
 Below is an image of the deployed application:
-![Deployed WeatherWise application](./assets/images/WeatherWise-screenshot.png)
+![Deployed WeatherWise application](./Assets/images/WeatherWise-screenshot.png)
 
 ## Deployment
 This application has been deployed [here](https://jakebjackson.github.io/WeatherWise/).
