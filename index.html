@@ -33,13 +33,13 @@
                 </div>
                 <!-- Dropdown to chose Country code for query. -->
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle p-1 mb-1 w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button id="country-dropdown" class="btn btn-secondary dropdown-toggle p-1 mb-1 w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Select Country
                     </button>
                     <ul class="dropdown-menu pd-1 w-100">
-                      <li><a class="dropdown-item" href="#au" value="au">Australia</a></li>
-                      <li><a class="dropdown-item" href="#us" value="us">America</a></li>
-                      <li><a class="dropdown-item" href="#nz" value="nz">New Zealand</a></li>
+                      <li><a id="australia" class="dropdown-item" href="#au" value="Australia" onclick="changeDropDown(this.id)">Australia</a></li>
+                      <li><a class="dropdown-item" href="#us" value="America" onclick="changeDropDown(this.value)">America</a></li>
+                      <li><a class="dropdown-item" href="#nz" value="New Zealand" onclick="changeDropDown(this.value)">New Zealand</a></li>
                     </ul>
                   </div>
                 <!-- Search button that runs the 'handleAPIQuery' function in the JS file when clicked -->

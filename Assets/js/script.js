@@ -48,9 +48,6 @@ function handleAPIQuery() {
     var city = searchBtn.val();
     var queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + countryCode + '&appid=' + apiKey + '&units=metric';
     
-
-
-    
     // Fetch request
     fetch(queryURL, {
         method: 'GET'
@@ -58,6 +55,13 @@ function handleAPIQuery() {
     .then(function (response) {
         // Logs response and returns response.json().
         console.log(response);
+
+        // Checks to see if the query response is ok.
+        if (response.status == 404) {
+            alert("Error: Not a valid city.");
+        } else if (response.status !== 200){
+            alert("Error: " + response.status);
+        }
         return response.json();
     })
     .then(function (data) {
@@ -85,7 +89,7 @@ function handleAPIQuery() {
                 date: dayjs.unix(data.list[daySelect].dt).format('dddd, DD/MM/YYYY'),
                 humidity: data.list[daySelect].main.humidity + '%',
                 temp: data.list[daySelect].main.temp + 'C',
-                wind: data.list[daySelect].wind.speed + 'km/h',
+                wind: data.list[daySelect].wind.speed + 'm/s',
                 conditions: data.list[daySelect].weather[0].main,
             };
             // If statement to check if day select is above 40
@@ -169,4 +173,10 @@ function handleGetFromLocalStorage(event) {
 
     // Calls handleDisplayResults function to display the items retrieved from local on the webpage
     handleDisplayResults();
+}
+
+// Function to change dropdown text to the selected country.
+function changeDropdown(selectedCountry) {
+
+    $('#country-dropdown').text(selectedCountry);
 }
